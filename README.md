@@ -1,7 +1,10 @@
-# Negative Margin Matters: Understanding Margin in Few-shot Classification
+# Neg-Margin Matters: Understanding Margin in Few-shot Classification
 
-This is a PyTorch implementation of the paper [Negative Margin Matters: Understanding Margin in Few-shot Classification](https://arxiv.org/abs/2003.12060):
+By [Bin Liu](https://scholar.google.com/citations?user=-RYlJvYAAAAJ&hl=zh-CN), [Yue Cao](http://yue-cao.me), Yutong Lin, Qi Li, [Zheng Zhang](https://www.microsoft.com/en-us/research/people/zhez/), [Mingsheng Long](http://ise.thss.tsinghua.edu.cn/~mlong/), [Han Hu](https://ancientmooner.github.io/).
 
+This repo is an official implementation of [Negative Margin Matters: Understanding Margin in Few-shot Classification](https://arxiv.org/abs/2003.12060) on PyTorch.
+
+## Citation
 ```
 @Article{liu2020negative,
   title={Negative Margin Matters: Understanding Margin in Few-shot Classification},
@@ -20,7 +23,7 @@ We introduce a `negative` margin [cosine] softmax crossentropy loss to metric le
 As shown in the figure above, applying larger margin to softmax loss can achieve better accuracy on base classes. But surprisingly, applying appropriate negative margin to softmax loss can achieve
 state-of-the-art few-shot accuracy on novel classes.
 
-## Enviroment
+## Environment
  - `Anaconda` with `python >= 3.6`
  - `pytorch=1.2.0, torchvison, cuda=9.2`
  - others: `pip install yacs`
@@ -36,7 +39,7 @@ state-of-the-art few-shot accuracy on novel classes.
 
 (WARNING: This would download the 155G ImageNet dataset. You can comment out correponded line 5-6 in `download_miniImagenet.sh` if you already have one.) 
 
-### mini-ImageNet->CUB (cross)
+### mini-ImageNet->CUB
 * Finish preparation for CUB and mini-ImageNet and you are done!
 
 ## Train and eval
