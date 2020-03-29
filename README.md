@@ -23,14 +23,14 @@ This paper is initially described in [arxiv](https://arxiv.org/abs/2003.12060), 
 
 The few-shot classification accuracy on the novel classes with ResNet-18 as the backbone is listed bellowing:.
 
-| <sub>Method</sub>     | <sub>Mini-ImageNet</sub><br/><sub>1 - shot </sub> | <sub>Mini-ImageNet</sub><br/><sub>5 - shot </sub> | <sub>CUB</sub><br/><sub>1 - shot</sub> | <sub>CUB</sub><br/><sub>5 - shot</sub> | <sub>Mini-ImageNet</sub> $\rightarrow$ <sub>CUB</sub><br/><sub>5-shot </sub> |
-| --------------------- | ------------------------------------------------- | ------------------------------------------------- | -------------------------------------- | -------------------------------------- | ---------------------------------------------------------------------------- |
-| <sub>Softmax</sub>    | 51.75$\pm$0.80                                    | 74.27$\pm$0.63                                    | 65.51$\pm$0.87                         | 82.85$\pm$0.55                         | 65.57$\pm$0.70                                                               |
-| <sub>Cosine</sub>     | 51.87$\pm$0.77                                    | 75.68$\pm$0.63                                    | 67.02$\pm$0.90                         | 83.58$\pm$0.54                         | 62.04$\pm$0.76                                                               |
-| <sub>Neg-Sofmax</sub> | 59.02$\pm$0.81                                    | 78.80$\pm$0.61                                    | 71.48$\pm$0.83                         | 87.30$\pm$0.48                         | 69.30$\pm$0.73                                                               |
-| <sub>Neg-Cosine</sub> | 62.33$\pm$0.82                                    | 80.94$\pm$0.59                                    | 72.66$\pm$0.85                         | 89.40$\pm$0.43                         | 67.03$\pm$0.76                                                               |
+| <sub>Method</sub>     | <sub>Mini-ImageNet</sub><br/><sub>1 - shot </sub> | <sub>Mini-ImageNet</sub><br/><sub>5 - shot </sub> | <sub>CUB</sub><br/><sub>1 - shot</sub> | <sub>CUB</sub><br/><sub>5 - shot</sub> | <sub>Mini-ImageNet --> CUB</sub><br/><sub>5-shot </sub> |
+| --------------------- | ------------------------------------------------- | ------------------------------------------------- | -------------------------------------- | -------------------------------------- | ------------------------------------------------------- |
+| <sub>Softmax</sub>    | 51.75+-0.80                                       | 74.27+-0.63                                       | 65.51+-0.87                            | 82.85+-0.55                            | 65.57+-0.70                                             |
+| <sub>Cosine</sub>     | 51.87+-0.77                                       | 75.68+-0.63                                       | 67.02+-0.90                            | 83.58+-0.54                            | 62.04+-0.76                                             |
+| <sub>Neg-Sofmax</sub> | 59.02+-0.81                                       | 78.80+-0.61                                       | 71.48+-0.83                            | 87.30+-0.48                            | 69.30+-0.73                                             |
+| <sub>Neg-Cosine</sub> | 62.33+-0.82                                       | 80.94+-0.59                                       | 72.66+-0.85                            | 89.40+-0.43                            | 67.03+-0.76                                             |
 
- You can download the pre-trained model checkpoints of `resnet18` from [OneDrive](https://1drv.ms/u/s!As</sub>aPPmt<sub>CAq08pRM54_CuGPFbfgUz?e=ydjBfW).
+ You can download the pre-trained model checkpoints of `resnet18` from [OneDrive](https://1drv.ms/u/s!As</sub>+-<sub>CAq08pRM54_CuGPFbfgUz?e=ydjBfW).
 
 ## Getting started
 
