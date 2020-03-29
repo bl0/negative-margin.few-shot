@@ -1,0 +1,13 @@
+data/
+__pycache__
+*.swp
+checkpoints
+features
+.idea
+.vscode
+.ipynb_checkpoints
+tensorboard
+
+output
+*.sh
+notebooks/figures/

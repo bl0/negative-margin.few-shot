@@ -1,0 +1,14 @@
+
+dataset:
+    type: "mini2CUB"
+    base_file: "data/miniImagenet/all.json"
+    base_val_file: ""
+    val_file: "data/CUB/val.json"
+    novel_file: "data/CUB/novel.json"
+    num_class: 100
+
+train:
+    stop_epoch: 400
+    warmup_params:
+        epoch: 100
+

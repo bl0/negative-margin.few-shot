@@ -1,0 +1,4 @@
+method:
+    metric: "neg-softmax"
+    metric_params:
+        scale_factor: 5.0
