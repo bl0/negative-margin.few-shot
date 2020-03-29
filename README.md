@@ -1,10 +1,15 @@
-# Neg-Margin Matters: Understanding Margin in Few-shot Classification
+# Negative Margin Matters: Understanding Margin in Few-shot Classification
 
 By [Bin Liu](https://scholar.google.com/citations?user=-RYlJvYAAAAJ&hl=zh-CN), [Yue Cao](http://yue-cao.me), Yutong Lin, Qi Li, [Zheng Zhang](https://www.microsoft.com/en-us/research/people/zhez/), [Mingsheng Long](http://ise.thss.tsinghua.edu.cn/~mlong/), [Han Hu](https://ancientmooner.github.io/).
 
-This repo is an official implementation of [Negative Margin Matters: Understanding Margin in Few-shot Classification](https://arxiv.org/abs/2003.12060) on PyTorch.
+This repo is an official implementation of ["Negative Margin Matters: Understanding Margin in Few-shot Classification"](https://arxiv.org/abs/2003.12060) on PyTorch.
+
+## Introduction
+
+This paper is initially described in [arxiv](https://arxiv.org/abs/2003.12060), which introduces a negative margin loss to metric learning based few-shot learning methods. The negative margin loss significantly outperforms regular softmax loss, and achieves state-of-the-art accuracy on three standard few-shot classification benchmarks with few bells and whistles. These results are contrary to the common practice in the metric learning field, that the margin is zero or positive. To understand why the negative margin loss performs well for the few-shot classification, the authors analyze the discriminability of learned features w.r.t different margins for training and novel classes, both empirically and theoretically. They find that although negative margin reduces the feature discriminability for training classes, it may also avoid falsely mapping samples of the same novel class to multiple peaks or clusters, and thus benefit the discrimination of novel classes. 
 
 ## Citation
+
 ```
 @Article{liu2020negative,
   title={Negative Margin Matters: Understanding Margin in Few-shot Classification},
@@ -14,35 +19,47 @@ This repo is an official implementation of [Negative Margin Matters: Understandi
 }
 ```
 
-## Highlight
+## Main Results
 
-![acc_wrt_margin](figures/fig1.png)
+The few-shot classification accuracy on the novel classes with ResNet-18 as the backbone is listed bellowing:.
 
-We introduce a `negative` margin [cosine] softmax crossentropy loss to metric learning-based few-shot learning methods.
+| <sub>Method</sub>     | <sub>Mini-ImageNet</sub><br/><sub>1 - shot </sub> | <sub>Mini-ImageNet</sub><br/><sub>5 - shot </sub> | <sub>CUB</sub><br/><sub>1 - shot</sub> | <sub>CUB</sub><br/><sub>5 - shot</sub> | <sub>Mini-ImageNet</sub> $\rightarrow$ <sub>CUB</sub><br/><sub>5-shot </sub> |
+| --------------------- | ------------------------------------------------- | ------------------------------------------------- | -------------------------------------- | -------------------------------------- | ---------------------------------------------------------------------------- |
+| <sub>Softmax</sub>    | 51.75$\pm$0.80                                    | 74.27$\pm$0.63                                    | 65.51$\pm$0.87                         | 82.85$\pm$0.55                         | 65.57$\pm$0.70                                                               |
+| <sub>Cosine</sub>     | 51.87$\pm$0.77                                    | 75.68$\pm$0.63                                    | 67.02$\pm$0.90                         | 83.58$\pm$0.54                         | 62.04$\pm$0.76                                                               |
+| <sub>Neg-Sofmax</sub> | 59.02$\pm$0.81                                    | 78.80$\pm$0.61                                    | 71.48$\pm$0.83                         | 87.30$\pm$0.48                         | 69.30$\pm$0.73                                                               |
+| <sub>Neg-Cosine</sub> | 62.33$\pm$0.82                                    | 80.94$\pm$0.59                                    | 72.66$\pm$0.85                         | 89.40$\pm$0.43                         | 67.03$\pm$0.76                                                               |
 
-As shown in the figure above, applying larger margin to softmax loss can achieve better accuracy on base classes. But surprisingly, applying appropriate negative margin to softmax loss can achieve
-state-of-the-art few-shot accuracy on novel classes.
+ You can download the pre-trained model checkpoints of `resnet18` from [OneDrive](https://1drv.ms/u/s!As</sub>aPPmt<sub>CAq08pRM54_CuGPFbfgUz?e=ydjBfW).
 
-## Environment
+## Getting started
+
+### Environment
+
  - `Anaconda` with `python >= 3.6`
  - `pytorch=1.2.0, torchvison, cuda=9.2`
  - others: `pip install yacs`
 
-## Getting started
-### CUB
+### Datasets
+
+#### CUB
+
 * Change directory to `./data/CUB`
 * run `bash ./download_CUB.sh`
 
-### mini-ImageNet
+#### mini-ImageNet
+
 * Change directory to `./data/miniImagenet`
 * run `bash ./download_miniImagenet.sh` 
 
 (WARNING: This would download the 155G ImageNet dataset. You can comment out correponded line 5-6 in `download_miniImagenet.sh` if you already have one.) 
 
-### mini-ImageNet->CUB
+#### mini-ImageNet->CUB
+
 * Finish preparation for CUB and mini-ImageNet and you are done!
 
 ## Train and eval
+
 Run the following commands to train and evaluate:
 
 ```
@@ -56,11 +73,7 @@ python main.py --config [CONFIGFILENAME] \
 
  For additional options, please refer to `./lib/config.py`.
 
-## Pre-train weights
-
-We have provided the train scripts to reproduce the results of `resnet18`. Pleas check `./script` for details.
-
-Also, you can download the pre-trian model checkpoints of `resnet18` from [OneDrive](https://1drv.ms/u/s!AsaPPmtCAq08pRM54_CuGPFbfgUz?e=ydjBfW)
+We have also provided the train scripts to reproduce the results of `resnet18`. Pleas check `./script` for details.
 
 ## References
 Our testbed builds upon several existing publicly available code. Specifically, we have modified and integrated the following code into this project:
