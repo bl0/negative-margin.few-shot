@@ -11,9 +11,9 @@ This paper is initially described in [arxiv](https://arxiv.org/abs/2003.12060), 
 ## Citation
 
 ```
-@Article{liu2020negative,
+@article{liu2020negative,
   title={Negative Margin Matters: Understanding Margin in Few-shot Classification},
-  author={Bin Liu and Yue Cao and Yutong Lin and Qi Li and Zheng Zhang and Mingsheng Long and Han Hu},
+  author={Liu, Bin and Cao, Yue and Lin, Yutong and Li, Qi and Zhang, Zheng and Long, Mingsheng and Hu, Han},
   journal={arXiv preprint arXiv:2003.12060},
   year={2020}
 }
