@@ -4,6 +4,10 @@ By [Bin Liu](https://scholar.google.com/citations?user=-RYlJvYAAAAJ&hl=zh-CN), [
 
 This repo is an official implementation of ["Negative Margin Matters: Understanding Margin in Few-shot Classification"](https://arxiv.org/abs/2003.12060) on PyTorch.
 
+*Update on 2020/07/01*
+
+Our paper was accepted by ECCV 2020 as spotlight!
+
 ## Introduction
 
 This paper is initially described in [arxiv](https://arxiv.org/abs/2003.12060), which introduces a negative margin loss to metric learning based few-shot learning methods. The negative margin loss significantly outperforms regular softmax loss, and achieves state-of-the-art accuracy on three standard few-shot classification benchmarks with few bells and whistles. These results are contrary to the common practice in the metric learning field, that the margin is zero or positive. To understand why the negative margin loss performs well for the few-shot classification, the authors analyze the discriminability of learned features w.r.t different margins for training and novel classes, both empirically and theoretically. They find that although negative margin reduces the feature discriminability for training classes, it may also avoid falsely mapping samples of the same novel class to multiple peaks or clusters, and thus benefit the discrimination of novel classes. 
