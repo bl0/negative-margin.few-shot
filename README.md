@@ -34,7 +34,7 @@ The few-shot classification accuracy on the novel classes with ResNet-18 as the 
 | Neg-Sofmax | 59.02+-0.81                                       | 78.80+-0.61                                       | 71.48+-0.83                            | 87.30+-0.48                            | 69.30+-0.73                                             |
 | Neg-Cosine | 62.33+-0.82                                       | 80.94+-0.59                                       | 72.66+-0.85                            | 89.40+-0.43                            | 67.03+-0.76                                             |
 
- You can download the pre-trained model checkpoints of `resnet18` from [OneDrive](https://1drv.ms/u/s!As</sub>+-<sub>CAq08pRM54_CuGPFbfgUz?e=ydjBfW).
+ You can download the pre-trained model checkpoints of `resnet-18` from [OneDrive](https://1drv.ms/u/s!AsaPPmtCAq08pRM54_CuGPFbfgUz?e=ydjBfW).
 
 ## Getting started
 
