@@ -77,7 +77,7 @@ python main.py --config [CONFIGFILENAME] \
 
  For additional options, please refer to `./lib/config.py`.
 
-We have also provided the train scripts to reproduce the results of `resnet18`. Pleas check `./script` for details.
+We have also provided some scripts to reproduce the results in the paper. Pleas check `./script` for details.
 
 ## References
 Our testbed builds upon several existing publicly available code. Specifically, we have modified and integrated the following code into this project:
