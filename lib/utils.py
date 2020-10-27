@@ -56,29 +56,57 @@ class GradualWarmupScheduler(_LRScheduler):
       Proposed in 'Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour'.
       Args:
           optimizer (Optimizer): Wrapped optimizer.
-          multiplier: target learning rate = base lr * multiplier
-          total_epoch: target learning rate is reached at total_epoch, gradually
+          multiplier: init learning rate = base lr / multiplier
+          warmup_epoch: target learning rate is reached at warmup_epoch, gradually
           after_scheduler: after target_epoch, use this scheduler(eg. ReduceLROnPlateau)
       """
 
-    def __init__(self, optimizer, multiplier, total_epoch, after_scheduler):
+    def __init__(self, optimizer, multiplier, warmup_epoch, after_scheduler, last_epoch=-1):
         self.multiplier = multiplier
         if self.multiplier <= 1.:
             raise ValueError('multiplier should be greater than 1.')
-        self.total_epoch = total_epoch
+        self.warmup_epoch = warmup_epoch
         self.after_scheduler = after_scheduler
-        self.finished = False
-        super().__init__(optimizer)
+        super().__init__(optimizer, last_epoch=last_epoch)
 
     def get_lr(self):
-        return [base_lr / self.multiplier * ((self.multiplier - 1.) * self.last_epoch / self.total_epoch + 1.)
-                for base_lr in self.base_lrs]
+        if self.last_epoch > self.warmup_epoch:
+            return self.after_scheduler.get_lr()
+        else:
+            return [base_lr / self.multiplier * ((self.multiplier - 1.) * self.last_epoch / self.warmup_epoch + 1.)
+                    for base_lr in self.base_lrs]
 
-    def step(self, epoch):
-        if epoch > self.total_epoch:
-            self.after_scheduler.step(epoch - self.total_epoch)
+    def step(self, epoch=None):
+        if epoch is None:
+            epoch = self.last_epoch + 1
+        self.last_epoch = epoch
+        if epoch > self.warmup_epoch:
+            self.after_scheduler.step(epoch - self.warmup_epoch)
         else:
             super(GradualWarmupScheduler, self).step(epoch)
+
+    def state_dict(self):
+        """Returns the state of the scheduler as a :class:`dict`.
+
+        It contains an entry for every variable in self.__dict__ which
+        is not the optimizer.
+        """
+
+        state = {key: value for key, value in self.__dict__.items() if key != 'optimizer' and key != 'after_scheduler'}
+        state['after_scheduler'] = self.after_scheduler.state_dict()
+        return state
+
+    def load_state_dict(self, state_dict):
+        """Loads the schedulers state.
+
+        Arguments:
+            state_dict (dict): scheduler state. Should be an object returned
+                from a call to :meth:`state_dict`.
+        """
+
+        after_scheduler_state = state_dict.pop('after_scheduler')
+        self.__dict__.update(state_dict)
+        self.after_scheduler.load_state_dict(after_scheduler_state)
 
 
 def get_assigned_file(checkpoint_dir, epoch):
